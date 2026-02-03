@@ -70,6 +70,90 @@
   - *w* e *b* são números  
   - a função faz a linha
 
+##### ***squared error cost function***
+
+- função de erro mais usada em regressão linear  
+- mostra quão bem o modelo está indo – a linha passa perto dos exemplos de treinamento
+
+###### ***recapitulando**:*
+
+- **fw,b (x) \= wx \+ b**	  
+  - **w**, **b** \= parâmetros/coeficientes/pesos (variáveis que podem ser ajustadas para aprimorar o modelo  
+  - dependendo dos valores de w e b, a função fica diferente → gera uma linha diferente no gráfico  
+  - **w** → inclinação/declive da reta, determina quanto *f(x)* aumenta (w+) ou diminui (w–) a cada unidade adicionada em *x*   
+  - **b** → bias/viés, determina o ponto de partida (onde a reta cruza o eixo vertical *y* quando *x \= 0*); se *b* aumenta/diminui, a reta inteira sobe/desce
+
+**exemplo**: w \= 0 e b \= 1.5  
+
+- f(x) \= 0 \* x \+ 1.5  
+- y-hat \= 1.5 ( \= b) → b \= y-intercept (onde cruza o eixo y no gráfico)
+
+**exemplo**: w \= 0.5 e b \= 0  
+
+- f(x) \= 0.5 \* x  
+- declive \= 0.5 / 1 (valor de **w**)
+
+**exemplo**: w \= 0.5 e b \= 1  
+
+- f(x) \= 0.5 \* x \+ 1  
+- declive \= 0.5 / 1 (valor de **w**)
+
+###### ***voltando a COST FUNCTION***
+
+- a linha (y-hat) tenta prever resultados, mas nem sempre bate com os training examples  
+- mede a diferença entre as previsões do modelo e os valores reais de y
+ 
+**J(w,b) \= 12mi \= 1m y(i)\-y(i)2 →** ou
+
+**Jw, b= 12mi \= 1m fw,b(x(i))\-y(i) 2**
+
+- y  \= fw, b(x(i))  
+- soma os resultados desde *i \= 1* até *i \= m* e depois faz a média (para que o número não necessariamente suba a cada training set a mais), e /2 para ficar mais limpo  
+- *m* \= quantidade de training examples  
+- J deve ser o menor possível  
+- **y** é próximo de y(i) em todos (x(i), y(i))  
+- objetivo:  
+
+###### ***como usar a cost function para encontrar os melhores parâmetros para o modelo***
+
+- para que a linha bata com os exemplos de treino  
+- versão simplificada (b \= 0\) → a reta é obrigada a passar pela origem
+
+**fw(x)=wx**   
+**J(w)= 12mi \= 1m fw(x(i))\-y(i) 2**
+
+**exemplo:**
+
+- w fixo, função de x  
+- m \= 3  
+- erro: diferença de *y* entre (*y-hat* – *y real*)  
+- traça a função J com diferentes valores de *w*  
+  - cada valor de *w* corresponde a um valor na linha de *J*   
+  - quando *w \= 1*, *J(w) \= 0*   
+1. w \= 1  
+   **J(w)= 12mi \= 1m wx(i)\-y(i) 2 \= 12m( 02+ 02+ 02\) \= 0**  
+     
+2. w \= 0.5   
+- erro *x \= 1* \=  **(0.5-1)2**  
+- erro *x \= 2* \=  **(1-2)2**  
+- erro *x \= 3* \=  **(1.5-3)2**  
+- erro total → J (0) *\=* **\[3.5\]\*** **12 \* 3 \= 3.56 \~ \= 0.58**   
+    
+3. w \= 0  
+- erro *x \= 1* \=  **(1-0)2**  
+- erro *x \= 2* \=  **(2-0)2**  
+- erro *x \= 3* \=  **(3-0)2**  
+- erro total *\=* **\[14\]\*** **12 \* 3 \= 146 \~ \= 2.3**   
+    
+4. w \= –0.5  
+- erros \=  **(-0.5-1)2 \+(-1-2)2+ (-1.5-3)2**  
+- erros \= **\[31.5\]\*** **12 \* 3 \~ \= 5.25**
+
+
+J  
+- usa a cost function para encontrar o valor de *w* (ou de *w* e *b*) que minimiza *J* 
+
+
 ### ***classification***
 
 - prever uma **categoria**, a saída *y* é uma classe/rótulo (sim/não, 0/1, “cachorro”, “gato”) entre **poucas** possibilidades limitadas de outputs
@@ -111,4 +195,6 @@ c. mais inputs: grossura, uniformidade das células, formato
 ### *dimensionality reduction*
 
 - comprimir um conjunto de big-data para um conjunto menor perdendo o mínimo de informação possível
+
+
 
